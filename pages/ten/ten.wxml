@@ -1,0 +1,11 @@
+<import src="../../template/list.wxml"/>
+<view>
+    <block wx:if="{{modelShow}}">
+        <template is="model_dataoke" data="{{itemData}}"></template>
+    </block>
+</view>
+<view class="page">
+    <block wx:for="{{list}}" wx:key="index">
+        <template is="listColumn_dataoke" data="{{item,index}}"></template>
+    </block>
+</view>

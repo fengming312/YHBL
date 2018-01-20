@@ -1,0 +1,24 @@
+
+.swiper-tab {
+    border-bottom: 4rpx solid #ccc;
+    height: 35px;
+    white-space: nowrap;
+    z-index: 99;
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+}
+.tab-item {
+    width: 60px;
+    color: #777;
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 26rpx;
+    text-align: center;
+    line-height: 32px;
+    background-color: #fff;
+}
+.on {
+    color: #FC4E32;
+    border-bottom: 3px solid #FC4E32;
+}

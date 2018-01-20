@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/jingxuan/jingxuan",
+    "pages/ten/ten",
+    "pages/twenty/twenty"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "优惠爆料榜单",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "backgroundColor": "#333",
+    "color": "#fff",
+    "selectedColor": "#F95C68",
+    "list": [
+      {
+        "pagePath": "pages/jingxuan/jingxuan",
+        "text": "精选",
+        "iconPath": "./images/1.png",
+        "selectedIconPath": "./images/1-1.png"
+      },
+      {
+        "pagePath": "pages/ten/ten",
+        "text": "2小时爆款榜",
+        "iconPath": "./images/2.png",
+        "selectedIconPath": "./images/2-1.png"
+      },
+      {
+        "pagePath": "pages/twenty/twenty",
+        "text": "全天销量榜",
+        "iconPath": "./images/3.png",
+        "selectedIconPath": "./images/3-1.png"
+      }
+    ]
+  }
+}

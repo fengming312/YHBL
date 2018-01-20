@@ -1,0 +1,12 @@
+<import src="../../template/list.wxml"/>
+<view>
+    <block wx:if="{{modelShow}}">
+        <template is="model" data="{{itemData}}"></template>
+    </block>
+</view>
+<view class="page">
+    <block wx:for="{{list}}" wx:key="index">
+        <template is="listColumn" data="{{item,index}}"></template>
+    </block>
+    <image hidden="{{loading}}" src="../../images/load.gif" style="width: 80%;height: 130rpx;margin-left: 10%"></image>
+</view>

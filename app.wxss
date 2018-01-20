@@ -1,0 +1,22 @@
+/**app.wxss**/
+@import "./template/list.wxss";
+page {
+    height: 100%;
+    font-family: "微软雅黑";
+}
+
+.hide {
+    overflow: hidden;
+    height:100%
+}
+
+::-webkit-scrollbar {
+    width:0;
+    height:0;
+    color:transparent;
+}
+
+.sort-on {
+    color: #FA6A55;
+    border-bottom: 2px solid #F7D8D8;
+}

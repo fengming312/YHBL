@@ -1,0 +1,26 @@
+<import src="../../template/list.wxml"/>
+<view>
+    <block wx:if="{{modelShow}}">
+        <template is="{{currentTab == 0?'model_dataoke':'model'}}" data="{{itemData}}"></template>
+    </block>
+</view>
+<view class="page1" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+    <!--顶部导航栏-->
+    <scroll-view scroll-x="true" class="swiper-tab" scroll-left="{{scrollLeftDis}}">
+        <view wx:for="{{navList}}" wx:key="item" wx:for-item="item" class="tab-item {{currentTab==item.fid ? 'on' : ''}}" data-current="{{item.fid}}"
+              bindtap="swichNav">
+            {{item.name}}
+        </view>
+    </scroll-view>
+    <view style="height: 40px;"></view>
+    <view wx:if="{{currentTab != 0}}" style="margin-bottom: 3px;display: flex;justify-content: space-around;font-size: 24rpx;height: 60rpx;line-height: 60rpx;border-bottom: 1px solid #f1f1f1;">
+        <text bindtap="swichSort" data-item="{{item}}" wx:for="{{sortList}}" class="{{sortIndex == index?'sort-on':''}}" wx:key="item" style="padding: 0 20rpx;">{{item.name}}
+        </text>
+    </view>
+
+    <!--内容主体-->
+    <block wx:for="{{list}}" wx:key="index">
+        <template is="list" data="{{item,tagShow,index}}"></template>
+    </block>
+    <image hidden="{{loading}}" src="../../images/load.gif" style="width: 80%;height: 130rpx;margin-left: 10%"></image>
+</view>

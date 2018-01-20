@@ -1,0 +1,169 @@
+<!--淘客助手-->
+<template name="list">
+    <view class="box-list">
+        <view class="box-img" style="position: relative">
+            <image src="../../images/logo.png" style="position: absolute;left: 10rpx;top: 10rpx;width: 44rpx;height: 58rpx;" hidden="{{item.coupon_amount*100/100<40}}"></image>
+            <image lazy-load="true" class="img" src="{{item.goods_pic}}"></image>
+        </view>
+        <view class="box-text">
+            <text class="title">{{item.goods_short_title}}</text>
+            <text class="des">{{item.goods_intro}}</text>
+            <view class="row">
+                <text class="price-old">原价：<text style="text-decoration: line-through">￥{{item.goods_price}}</text></text>
+                <text class="sale-num">销量：{{item.goods_sale_num}}</text>
+            </view>
+            <view class="bottom">
+                <text class="price-now">
+                    <text style="font-size: 24rpx;color:#FC4E32">会员价</text>
+                    <text style="font-size: 36rpx;color:#FC4E32">￥</text>
+                    <text style="font-size: 40rpx;color:#FC4E32">{{item.huiyuan_price}}</text>
+                </text>
+                <view wx:if="{{tagShow}}" bindtap="show" data-data="{{item}}" data-index="{{index}}" style="display:flex;flex-direction:column;border-radius:10rpx;border:1px solid #FC4E32;margin-right: 30rpx;box-sizing: border-box">
+                    <text style="background-color:#FC4E32;text-align:center;color:#fff;font-size:24rpx;line-height:40rpx">领劵</text>
+                    <text style="text-align:center;font-size:24rpx;line-height:40rpx;color:#FC4E32;padding: 0 20rpx;"> 立减{{item.coupon_amount*100/100}}元</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="list_dataoke">
+    <view class="box-list">
+        <view class="box-img" style="position: relative">
+            <image src="../../images/logo.png" style="position: absolute;left: 10rpx;top: 10rpx;width: 44rpx;height: 58rpx;" hidden="{{item.Quan_price*100/100<40}}"></image>
+            <image lazy-load="true" class="img" src="{{item.Pic}}"></image>
+        </view>
+        <view class="box-text">
+            <text class="title">{{item.Title}}</text>
+            <text class="des">{{item.Introduce}}</text>
+            <view class="row">
+                <text class="price-old">原价：<text style="text-decoration: line-through">￥{{item.Org_Price}}</text></text>
+                <text class="sale-num">销量：{{item.Sales_num}}</text>
+            </view>
+            <view class="bottom">
+                <text class="price-now">
+                    <text style="font-size: 24rpx;color:#FC4E32">会员价</text>
+                    <text style="font-size: 36rpx;color:#FC4E32">￥</text>
+                    <text style="font-size: 40rpx;color:#FC4E32">{{item.Price}}</text>
+                </text>
+                <view wx:if="{{tagShow}}" bindtap="show" data-data="{{item}}" data-index="{{index}}" style="display:flex;flex-direction:column;border-radius:10rpx;border:1px solid #FC4E32;margin-right: 30rpx;box-sizing: border-box">
+                    <text style="background-color:#FC4E32;text-align:center;color:#fff;font-size:24rpx;line-height:40rpx">领劵</text>
+                    <text style="text-align:center;font-size:24rpx;line-height:40rpx;color:#FC4E32;padding: 0 20rpx;"> 立减{{item.Quan_price*100/100}}元</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+
+
+<template name="listColumn">
+    <view bindtap="show"  data-data="{{item}}"  data-index="{{index}}" style="width: 50%;float:left;box-sizing: border-box;display: flex;flex-direction: column;border: 1px solid #f1f1f1;padding: 10rpx;">
+        <view class="box-img" style="position: relative">
+            <image src="../../images/logo.png" style="position: absolute;left: 10rpx;top: 10rpx;width: 44rpx;height: 58rpx;"  hidden="{{item.coupon_amount*100/100<40}}"></image>
+            <image lazy-load="true" class="img" style="width: 100%;height: 380rpx;" src="{{item.goods_pic}}"></image>
+        </view>
+        <view style="padding-left: 6rpx;">
+            <text class="title" style="font-size: 24rpx;">{{item.goods_short_title}}</text>
+            <view class="row">
+                <text class="price-old" style="float: left;font-size: 20rpx;">原价：<text style="text-decoration: line-through">￥{{item.goods_price}}</text></text>
+                <text class="sale-num" style="float: right;margin-right: 0;font-size: 20rpx;">销量：{{item.goods_sale_num}}</text>
+            </view>
+            <view class="bottom">
+                <text class="price-now">
+                    <text style="font-size: 20rpx;color:#FC4E32">会员价</text>
+                    <text style="font-size: 24rpx;color:#FC4E32">￥</text>
+                    <text style="font-size: 30rpx;color:#FC4E32">{{item.huiyuan_price}}</text>
+                </text>
+                <view style="position: relative;margin-top: 10rpx;height: 30rpx;width: 120rpx;">
+                    <image src="../../images/juan.png" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"></image>
+                    <text style="position: absolute;width: 50px;left: 50%;text-align:center;line-height:30rpx;top: 0;font-size:20rpx;color: #fff;margin-left: -25px;"> 劵{{item.coupon_amount*100/100}}元</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="model">
+    <view bindtap="hide" style="width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);position: fixed;z-index: 888;filter: alpha(opacity=70);">
+    </view>
+    <view style="width: 80%;background-color: #fff;border-radius: 16rpx;position: fixed;z-index:999;left: 50%;margin-left: -40%;margin-top: 50rpx;">
+        <button open-type="share" style="width: 52rpx;height: 50rpx;position: absolute;right: 30rpx;top: 30rpx;background-color: rgba(225,225,225,0.1);border: none">
+            <image src="../../images/share.png" style="position: absolute;left: 0;top: 0;width: 50rpx;height: 50rpx;"></image>
+        </button>
+        <image lazy-load="true" style="width: 100%;height: 580rpx;border-radius: 16rpx" src="{{itemData.goods_pic}}"></image>
+        <view style="padding: 0 20rpx;">
+            <text class="des" style="font-size: 30rpx;color: #000">{{itemData.goods_title}}</text>
+            <text class="detail-des">{{itemData.goods_intro}}</text>
+            <view style="display: flex;justify-content: space-between">
+                <text class="detail-des" style="height: 50rpx;">销量：{{itemData.goods_sale_num}} <text style="margin-left: 10px;">评分：{{itemData.dsr}}</text></text>
+                <text style="margin-right: 30rpx;color:#FC4E32"><text style="font-size: 20rpx;color: #666">券后价</text>￥{{itemData.huiyuan_price}}</text>
+            </view>
+        </view>
+        <view style="padding: 0 50rpx;">
+            <view style="position:relative;background-color: #FB9595;font-size: 18rpx;height: 24rpx;line-height: 24rpx;box-sizing:border-box;width: 100%;border-radius: 12rpx;text-align: right;padding-right: 10rpx;">
+                结束时间：{{itemData.coupon_end_time}}
+                <view style="height: 24rpx;line-height: 24rpx;position: absolute;background-color: #fff;left: 0;top: 0;background-color: #FF5A5A;border-radius: 12rpx;width: 50%;text-align: left;padding-left: 10rpx;">开始时间：{{itemData.coupon_start_time}}</view>
+            </view>
+        </view>
+        <view style="width: 100%;display: flex;height: 80rpx;line-height: 80rpx;text-align: center;font-size: 24rpx;margin-top: 20rpx;">
+            <view bindtap="hide" style="flex: 1;border: 1px solid #f1f1f1;background-color: #f1f1f1;color: #FC4E32;border-radius: 0 0 0 16rpx">取消</view>
+            <view bindtap="setClipboardData" data-data="{{itemData}}" style="flex: 1;background-color: #FC4E32;color: #fff;border-radius:0 0 16rpx 0">领劵购买</view>
+        </view>
+    </view>
+</template>
+
+<!--大淘客-->
+
+<template name="listColumn_dataoke">
+    <view bindtap="show"  data-data="{{item}}"  data-index="{{index}}" style="width: 50%;float:left;box-sizing: border-box;display: flex;flex-direction: column;border: 1px solid #f1f1f1;padding: 10rpx;">
+        <view class="box-img" style="position: relative">
+            <image src="../../images/logo.png" style="position: absolute;left: 10rpx;top: 10rpx;width: 44rpx;height: 58rpx;"  hidden="{{item.Quan_price*100/100<40}}"></image>
+            <image lazy-load="true" class="img" style="width: 100%;height: 380rpx;" src="{{item.Pic}}"></image>
+        </view>
+        <view style="padding-left: 6rpx;">
+            <text class="title" style="font-size: 24rpx;">{{item.Title}}</text>
+            <view class="row">
+                <text class="price-old" style="float: left;font-size: 20rpx;">原价：<text style="text-decoration: line-through">￥{{item.Org_Price}}</text></text>
+                <text class="sale-num" style="float: right;margin-right: 0;font-size: 20rpx;">销量：{{item.Sales_num}}</text>
+            </view>
+            <view class="bottom">
+                <text class="price-now">
+                    <text style="font-size: 20rpx;color:#FC4E32">会员价</text>
+                    <text style="font-size: 24rpx;color:#FC4E32">￥</text>
+                    <text style="font-size: 30rpx;color:#FC4E32">{{item.Price}}</text>
+                </text>
+                <view style="position: relative;margin-top: 10rpx;height: 30rpx;width: 120rpx;">
+                    <image src="../../images/juan.png" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"></image>
+                    <text style="position: absolute;width: 50px;left: 50%;text-align:center;line-height:30rpx;top: 0;font-size:20rpx;color: #fff;margin-left: -25px;"> 劵{{item.Quan_price*100/100}}元</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="model_dataoke">
+    <view bindtap="hide" style="width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);position: fixed;z-index: 888;filter: alpha(opacity=70);">
+    </view>
+    <view style="width: 80%;background-color: #fff;border-radius: 16rpx;position: fixed;z-index:999;left: 50%;margin-left: -40%;margin-top: 50rpx;">
+        <button open-type="share" style="width: 52rpx;height: 50rpx;position: absolute;right: 30rpx;top: 30rpx;background-color: rgba(225,225,225,0.1);border: none">
+            <image src="../../images/share.png" style="position: absolute;left: 0;top: 0;width: 50rpx;height: 50rpx;"></image>
+        </button>
+        <image lazy-load="true" style="width: 100%;height: 580rpx;border-radius: 16rpx" src="{{itemData.Pic}}"></image>
+        <view style="padding: 0 20rpx;">
+            <text class="des" style="font-size: 30rpx;color: #000">{{itemData.Title}}</text>
+            <text class="detail-des">{{itemData.Introduce}}</text>
+            <view style="display: flex;justify-content: space-between">
+                <text class="detail-des" style="height: 50rpx;">销量：{{itemData.Sales_num}} <text style="margin-left: 10px;">评分：{{itemData.Dsr}}</text></text>
+                <text style="margin-right: 30rpx;color:#FC4E32"><text style="font-size: 20rpx;color: #666">券后价</text>￥{{itemData.Price}}</text>
+            </view>
+        </view>
+        <view style="padding: 0 50rpx;">
+            <view style="position:relative;background-color: #FB9595;font-size: 18rpx;height: 24rpx;line-height: 24rpx;box-sizing:border-box;width: 100%;border-radius: 12rpx;text-align: right;padding-right: 10rpx;">
+                结束时间：{{itemData.Quan_time}}
+                <view style="height: 24rpx;line-height: 24rpx;position: absolute;background-color: #fff;left: 0;top: 0;background-color: #FF5A5A;border-radius: 12rpx;width: 50%;text-align: left;padding-left: 10rpx;">券剩余数量：{{itemData.Quan_surplus}}</view>
+            </view>
+        </view>
+        <view style="width: 100%;display: flex;height: 80rpx;line-height: 80rpx;text-align: center;font-size: 24rpx;margin-top: 20rpx;">
+            <view bindtap="hide" style="flex: 1;border: 1px solid #f1f1f1;background-color: #f1f1f1;color: #FC4E32;border-radius: 0 0 0 16rpx">取消</view>
+            <view bindtap="setClipboardData" data-data="{{itemData}}" style="flex: 1;background-color: #FC4E32;color: #fff;border-radius:0 0 16rpx 0">领劵购买</view>
+        </view>
+    </view>
+</template>
+

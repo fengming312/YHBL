@@ -8,5 +8,10 @@
     <block wx:for="{{list}}" wx:key="index">
         <template is="listColumn" data="{{item,index}}"></template>
     </block>
-    <image hidden="{{loading}}" src="../../images/load.gif" style="width: 80%;height: 130rpx;margin-left: 10%"></image>
+    <block>
+        <template is="loading" data="{{loading}}"></template>
+    </block>
+    <block>
+        <template is="toTop" data="{{toTopShow}}"></template>
+    </block>
 </view>

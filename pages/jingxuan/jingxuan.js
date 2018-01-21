@@ -25,6 +25,7 @@ Page({
 		tagName: "",
 		tagShow: false,
 		buyText: "",
+    toTopShow:true,
 		sortList: [
 			{
 				id: 0,
@@ -129,7 +130,28 @@ Page({
 			}
 		}
 	},
-	
+
+  onPageScroll (e) {
+    if (e.scrollTop >= 1300) {
+    	this.setData({
+        toTopShow:false
+			})
+    }else {
+      this.setData({
+        toTopShow:true
+      })
+		}
+  },
+
+	toTop () {
+    this.setData({
+      toTopShow:true
+    })
+    wx.pageScrollTo({
+      scrollTop: 0,
+    })
+	},
+
 	show (e) {
 		let itemData = e.currentTarget.dataset.data;
 		itemData.index = e.currentTarget.dataset.index;
@@ -259,7 +281,8 @@ Page({
 			title: '加载中',
 		})
 		wx.pageScrollTo({
-			scrollTop: 0
+      scrollTop: 0,
+      duration: 1
 		})
 		wx.getSystemInfo({
 			success: function (res) {
@@ -298,6 +321,7 @@ Page({
 	},
 	
 	touchStart:function(e){
+    return false
 		touchDot = e.touches[0].pageX; // 获取触摸时的原点
 		touchDotY = e.touches[0].pageY; // 获取触摸时的原点
 		leftMove = false;
@@ -305,6 +329,8 @@ Page({
 	},
 	
 	touchMove (e) {
+    console.log(1111);
+    return false
 		var touchMove = e.touches[0].pageX;
 		var touchMoveY = e.touches[0].pageY;
 		let yDis = Math.abs(touchMoveY - touchDotY)
@@ -318,6 +344,7 @@ Page({
 	
 	// 触摸结束事件
 	touchEnd:function(e){
+		return false
 		if (leftMove && this.data.loading) {
 			if (idx == 11) {
 				return false;
@@ -400,7 +427,8 @@ Page({
 					}
 					if (cachedResults.items.length >= 800) {
 						wx.pageScrollTo({
-							scrollTop: 0
+              scrollTop: 0,
+              duration: 1
 						})
 						cachedResults.items.splice(0)
 						cachedResults.items = cachedResults.items.concat(arr)

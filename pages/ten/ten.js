@@ -15,6 +15,8 @@ Page({
 		tagName: "",
 		tagShow: false,
 		buyText: "",
+    inputValue:"",
+    toTopShow:true,
 		sortList: [
 			{
 				id: 0,
@@ -35,6 +37,9 @@ Page({
 		],
 	},
 	onShow () {
+    this.setData({
+      inputValue:''
+    })
 		wx.showNavigationBarLoading() //在标题栏中显示加载
 		this.loadData(1, this.data.currentTab);
 	},
@@ -55,6 +60,48 @@ Page({
 			})
 		})
 	},
+
+  toSearch () {
+    if (this.data.inputValue) {
+      wx.navigateTo({
+        url: `../search/search?inputValue=${this.data.inputValue}`
+      })
+    }else {
+      wx.showToast({
+        title: '请输入关键词',
+        icon:'none',
+        duration: 1200
+      })
+		}
+	},
+
+  bindKeyInput: function(e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
+
+  onPageScroll (e) {
+    if (e.scrollTop >= 1300) {
+      this.setData({
+        toTopShow:false
+      })
+    }else {
+      this.setData({
+        toTopShow:true
+      })
+    }
+  },
+
+  toTop () {
+    this.setData({
+      toTopShow:true
+    })
+    wx.pageScrollTo({
+      scrollTop: 0,
+    })
+  },
+
 	onShareAppMessage: function (res) {
 		if (res.from === 'button') {
 			// 来自页面内转发按钮
@@ -215,7 +262,8 @@ Page({
 					}
 					if (cachedResults.items.length >= 800) {
 						wx.pageScrollTo({
-							scrollTop: 0
+							scrollTop: 0,
+              duration: 0
 						})
 						cachedResults.items.splice(0)
 						cachedResults.items = cachedResults.items.concat(arr)

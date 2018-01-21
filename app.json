@@ -2,7 +2,8 @@
   "pages": [
     "pages/jingxuan/jingxuan",
     "pages/ten/ten",
-    "pages/twenty/twenty"
+    "pages/twenty/twenty",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",

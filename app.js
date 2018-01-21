@@ -23,6 +23,7 @@ App({
     }
   },
 
+
   globalData: {
     userInfo: null
   }

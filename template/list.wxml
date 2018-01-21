@@ -26,35 +26,6 @@
         </view>
     </view>
 </template>
-<template name="list_dataoke">
-    <view class="box-list">
-        <view class="box-img" style="position: relative">
-            <image src="../../images/logo.png" style="position: absolute;left: 10rpx;top: 10rpx;width: 44rpx;height: 58rpx;" hidden="{{item.Quan_price*100/100<40}}"></image>
-            <image lazy-load="true" class="img" src="{{item.Pic}}"></image>
-        </view>
-        <view class="box-text">
-            <text class="title">{{item.Title}}</text>
-            <text class="des">{{item.Introduce}}</text>
-            <view class="row">
-                <text class="price-old">原价：<text style="text-decoration: line-through">￥{{item.Org_Price}}</text></text>
-                <text class="sale-num">销量：{{item.Sales_num}}</text>
-            </view>
-            <view class="bottom">
-                <text class="price-now">
-                    <text style="font-size: 24rpx;color:#FC4E32">会员价</text>
-                    <text style="font-size: 36rpx;color:#FC4E32">￥</text>
-                    <text style="font-size: 40rpx;color:#FC4E32">{{item.Price}}</text>
-                </text>
-                <view wx:if="{{tagShow}}" bindtap="show" data-data="{{item}}" data-index="{{index}}" style="display:flex;flex-direction:column;border-radius:10rpx;border:1px solid #FC4E32;margin-right: 30rpx;box-sizing: border-box">
-                    <text style="background-color:#FC4E32;text-align:center;color:#fff;font-size:24rpx;line-height:40rpx">领劵</text>
-                    <text style="text-align:center;font-size:24rpx;line-height:40rpx;color:#FC4E32;padding: 0 20rpx;"> 立减{{item.Quan_price*100/100}}元</text>
-                </view>
-            </view>
-        </view>
-    </view>
-</template>
-
-
 <template name="listColumn">
     <view bindtap="show"  data-data="{{item}}"  data-index="{{index}}" style="width: 50%;float:left;box-sizing: border-box;display: flex;flex-direction: column;border: 1px solid #f1f1f1;padding: 10rpx;">
         <view class="box-img" style="position: relative">
@@ -88,7 +59,7 @@
         <button open-type="share" style="width: 52rpx;height: 50rpx;position: absolute;right: 30rpx;top: 30rpx;background-color: rgba(225,225,225,0.1);border: none">
             <image src="../../images/share.png" style="position: absolute;left: 0;top: 0;width: 50rpx;height: 50rpx;"></image>
         </button>
-        <image lazy-load="true" style="width: 100%;height: 580rpx;border-radius: 16rpx" src="{{itemData.goods_pic}}"></image>
+        <image lazy-load="true" style="width: 100%;height: 580rpx;border-radius: 16rpx 16rpx 0 0" src="{{itemData.goods_pic}}"></image>
         <view style="padding: 0 20rpx;">
             <text class="des" style="font-size: 30rpx;color: #000">{{itemData.goods_title}}</text>
             <text class="detail-des">{{itemData.goods_intro}}</text>
@@ -111,7 +82,33 @@
 </template>
 
 <!--大淘客-->
-
+<template name="list_dataoke">
+    <view class="box-list">
+        <view class="box-img" style="position: relative">
+            <image src="../../images/logo.png" style="position: absolute;left: 10rpx;top: 10rpx;width: 44rpx;height: 58rpx;" hidden="{{item.Quan_price*100/100<40}}"></image>
+            <image lazy-load="true" class="img" src="{{item.Pic}}"></image>
+        </view>
+        <view class="box-text">
+            <text class="title">{{item.Title}}</text>
+            <text class="des">{{item.Introduce}}</text>
+            <view class="row">
+                <text class="price-old">原价：<text style="text-decoration: line-through">￥{{item.Org_Price}}</text></text>
+                <text class="sale-num">销量：{{item.Sales_num}}</text>
+            </view>
+            <view class="bottom">
+                <text class="price-now">
+                    <text style="font-size: 24rpx;color:#FC4E32">会员价</text>
+                    <text style="font-size: 36rpx;color:#FC4E32">￥</text>
+                    <text style="font-size: 40rpx;color:#FC4E32">{{item.Price}}</text>
+                </text>
+                <view wx:if="{{tagShow}}" bindtap="show" data-data="{{item}}" data-index="{{index}}" style="display:flex;flex-direction:column;border-radius:10rpx;border:1px solid #FC4E32;margin-right: 30rpx;box-sizing: border-box">
+                    <text style="background-color:#FC4E32;text-align:center;color:#fff;font-size:24rpx;line-height:40rpx">领劵</text>
+                    <text style="text-align:center;font-size:24rpx;line-height:40rpx;color:#FC4E32;padding: 0 20rpx;"> 立减{{item.Quan_price*100/100}}元</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
 <template name="listColumn_dataoke">
     <view bindtap="show"  data-data="{{item}}"  data-index="{{index}}" style="width: 50%;float:left;box-sizing: border-box;display: flex;flex-direction: column;border: 1px solid #f1f1f1;padding: 10rpx;">
         <view class="box-img" style="position: relative">
@@ -139,13 +136,13 @@
     </view>
 </template>
 <template name="model_dataoke">
-    <view bindtap="hide" style="width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);position: fixed;z-index: 888;filter: alpha(opacity=70);">
+    <view bindtouchmove="touchMove" bindtap="hide" style="width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);position: fixed;z-index: 888;filter: alpha(opacity=70);">
     </view>
-    <view style="width: 80%;background-color: #fff;border-radius: 16rpx;position: fixed;z-index:999;left: 50%;margin-left: -40%;margin-top: 50rpx;">
+    <view bindtouchmove="touchMove" style="width: 80%;background-color: #fff;border-radius: 16rpx;position: fixed;z-index:999;left: 50%;margin-left: -40%;margin-top: 50rpx;">
         <button open-type="share" style="width: 52rpx;height: 50rpx;position: absolute;right: 30rpx;top: 30rpx;background-color: rgba(225,225,225,0.1);border: none">
             <image src="../../images/share.png" style="position: absolute;left: 0;top: 0;width: 50rpx;height: 50rpx;"></image>
         </button>
-        <image lazy-load="true" style="width: 100%;height: 580rpx;border-radius: 16rpx" src="{{itemData.Pic}}"></image>
+        <image lazy-load="true" style="width: 100%;height: 580rpx;border-radius: 16rpx 16rpx 0 0" src="{{itemData.Pic}}"></image>
         <view style="padding: 0 20rpx;">
             <text class="des" style="font-size: 30rpx;color: #000">{{itemData.Title}}</text>
             <text class="detail-des">{{itemData.Introduce}}</text>
@@ -166,4 +163,27 @@
         </view>
     </view>
 </template>
+
+<template name="search">
+    <view style="padding: 0 40rpx;position: fixed;width: 100%;box-sizing: border-box;background-color: #fff;z-index: 800;opacity: 0.9">
+        <view style="display: flex;border: 1px solid #FC4E32;padding-left: 20rpx;border-radius: 8rpx">
+            <input style="flex:1;font-size: 24rpx;height: 50rpx;line-height: 50rpx;" placeholder="请输入关键词" value="{{searchValue}}" bindconfirm="search" bindinput="bindKeyInput"/>
+            <text bindtap="search"  style="background-color: #FC4E32;color: #fff;width: 120rpx;text-align: center;font-size: 30rpx;line-height:50rpx;border-radius:0 5rpx 5rpx 0">找 劵</text>
+        </view>
+        <view style="background-color: #fff;width: 100%;height: 10rpx;opacity: 0.6"></view>
+    </view>
+</template>
+
+<template name="loading" >
+    <view style="display: flex;justify-content: center;align-items: center;height: 80rpx;width: 100%;">
+        <image hidden="{{loading}}" src="../../images/load.gif" style="width: 40rpx;height: 40rpx;margin:0 10rpx"></image>
+        <text hidden="{{loading}}" style="font-size: 24rpx;">数据加载中...</text>
+    </view>
+</template>
+
+<template name="toTop" >
+   <image bindtap="toTop" hidden="{{toTopShow}}" src="../../images/totop.png" style="opacity:0.7;width: 60rpx;height: 60rpx;position: fixed;z-index: 801;right: 60rpx;bottom: 150rpx;"></image>
+</template>
+
+
 

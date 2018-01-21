@@ -5,7 +5,18 @@
     </block>
 </view>
 <view class="page">
+    <view style="padding: 0 40rpx;position: fixed;width: 100%;box-sizing: border-box;background-color: #fff;z-index: 800;opacity: 0.9">
+        <view style="display: flex;border: 1px solid #FC4E32;padding-left: 20rpx;border-radius: 8rpx">
+            <input style="flex:1;font-size: 24rpx;height: 50rpx;line-height: 50rpx;" placeholder="请输入关键词" confirm-type="搜索" bindconfirm="toSearch" bindinput="bindKeyInput" value="{{inputValue}}"/>
+            <text bindtap="toSearch" style="background-color: #FC4E32;color: #fff;width: 120rpx;text-align: center;font-size: 30rpx;line-height:50rpx;border-radius:0 5rpx 5rpx 0">找 劵</text>
+        </view>
+        <view style="background-color: #fff;width: 100%;height: 10rpx;opacity: 0.6"></view>
+    </view>
+    <view style="height: 80rpx;"></view>
     <block wx:for="{{list}}" wx:key="index">
         <template is="listColumn_dataoke" data="{{item,index}}"></template>
+    </block>
+    <block>
+        <template is="toTop" data="{{toTopShow}}"></template>
     </block>
 </view>

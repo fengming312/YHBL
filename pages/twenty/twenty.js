@@ -16,6 +16,7 @@ Page({
 		tagName: "",
 		tagShow: false,
 		buyText: "",
+    toTopShow:true,
 		sortList: [
 			{
 				id: 0,
@@ -68,6 +69,28 @@ Page({
 			}
 		}
 	},
+
+  onPageScroll (e) {
+    if (e.scrollTop >= 1300) {
+      this.setData({
+        toTopShow:false
+      })
+    }else {
+      this.setData({
+        toTopShow:true
+      })
+    }
+  },
+
+  toTop () {
+    this.setData({
+      toTopShow:true
+    })
+    wx.pageScrollTo({
+      scrollTop: 0,
+    })
+  },
+
 	show (e) {
 		if (!this.data.tagShow) {
 			return false;
@@ -216,7 +239,8 @@ Page({
 					}
 					if (cachedResults.items.length >= 800) {
 						wx.pageScrollTo({
-							scrollTop: 0
+              scrollTop: 0,
+              duration: 0
 						})
 						cachedResults.items.splice(0)
 						cachedResults.items = cachedResults.items.concat(arr)

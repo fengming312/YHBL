@@ -17,6 +17,7 @@ Page({
 		buyText: "",
     inputValue:"",
     toTopShow:true,
+    searchShow:false,
 		sortList: [
 			{
 				id: 0,
@@ -82,7 +83,16 @@ Page({
   },
 
   onPageScroll (e) {
-    if (e.scrollTop >= 1300) {
+    if (e.scrollTop <= 2000) {
+      this.setData({
+        searchShow:false
+      })
+    }else {
+      this.setData({
+        searchShow:true
+      })
+    }
+    if (e.scrollTop >= 2500) {
       this.setData({
         toTopShow:false
       })

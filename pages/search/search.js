@@ -105,8 +105,8 @@ Page({
       loading:false
     })
     wx.request({
-      // url: 'https://senhuor.com/api/all',
-      url: 'http://localhost:3001/api/all',
+      url: 'https://senhuor.com/api/all',
+      // url: 'http://localhost:3001/api/all',
       data: {
         "page": page,
         "api": "search",
@@ -139,6 +139,9 @@ Page({
           }
           let arr = res.data.data.data.list;
           for (let i = 0; i < arr.length; i++) {
+            if (!arr[i].goods_pic.startsWith("http")) {
+              arr[i].goods_pic = "http:"+arr[i].goods_pic;
+            }
             arr[i].goods_intro = arr[i].goods_introduce
             arr[i].coupon_amount = arr[i].coupon_price
             arr[i].goods_sale_num = arr[i].goods_sales

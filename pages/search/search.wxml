@@ -19,7 +19,7 @@
     <block>
         <template is="loading" data="{{loading}}"></template>
     </block>
-    <view hidden="{{!nomore}}" style="height: 40rpx;line-height: 40rpx;font-size: 24rpx;text-align: center;color: #ccc">没有搜索到相关数据...</view>
+    <view hidden="{{!nomore}}" style="width: 100%;box-sizing:border-box;height: 40rpx;line-height: 40rpx;font-size: 24rpx;text-align: center;color: #ccc">没有搜索到相关数据...</view>
     <block>
         <template is="toTop" data="{{toTopShow}}"></template>
     </block>

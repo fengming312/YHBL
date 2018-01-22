@@ -255,15 +255,6 @@ Page({
 				}
 				if (res.data.code == '0') {
 					let arr = res.data.data.result;
-//					for (let i = 0; i < dataArr.length; i++) {
-//						if (!dataArr[i].goods_pic.startsWith("http")) {
-//							dataArr[i].goods_pic = "http:"+dataArr[i].goods_pic;
-//						}
-//						dataArr[i].huiyuan_price = parseFloat(dataArr[i].goods_price-dataArr[i].coupon_amount).toFixed(0);
-//						if (dataArr[i].Sales_num >= 50 && dataArr[i].Dsr >= 4.6) {
-//							arr.push(dataArr[i])
-//						}
-//					}
 					if (page == 1) {
 						cachedResults.nextPage = 1
 						cachedResults.items = arr

@@ -409,6 +409,8 @@ Page({
 							dataArr[i].goods_sale_num = dataArr[i].Sales_num
 							dataArr[i].huiyuan_price = dataArr[i].Price
 							dataArr[i].dsr = dataArr[i].Dsr
+							dataArr[i].goods_id = dataArr[i].GoodsID
+							dataArr[i].coupon_id = dataArr[i].Quan_id
 						}else {
 							if (!dataArr[i].goods_pic.startsWith("http")) {
 								dataArr[i].goods_pic = "http:"+dataArr[i].goods_pic;

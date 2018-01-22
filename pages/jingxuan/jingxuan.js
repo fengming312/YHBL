@@ -120,7 +120,7 @@ Page({
 			console.log(res.target)
 		}
 		return {
-			title: '优惠爆料榜单',
+      title: '胜者为王，20分钟内最强爆款',
 			imageUrl: '../../images/icon.jpg',
 			success: function (res) {
 				// 转发成功

@@ -1,6 +1,35 @@
-<view style="height: 100%;background-color: #EDEDED;">
+<view style="height: 100%;background-color: #F4F4F4;">
     <view class="heder">
         <image src="{{avatar}}" style="border-radius: 50%;width: 150rpx;height: 150rpx;"></image>
         <text style="margin-top: 20rpx;">{{nickName}}</text>
+    </view>
+    <view class="body">
+        <view class="item">
+            <image class="itemimg" src="../../images/jifen.png"></image>
+            <text style="margin: 15rpx 0;color: #408CE2">1000.00</text>
+            <text style="font-size: 24rpx;color: #666">积分</text>
+        </view>
+        <view class="item">
+            <image class="itemimg" src="../../images/qian.png"></image>
+            <text style="margin: 15rpx 0;color: #408CE2">10.00</text>
+            <text style="font-size: 24rpx;color: #666">余额</text>
+        </view>
+    </view>
+    <view class="body" style="margin-top: 10rpx;">
+        <view class="item">
+            <image class="itemimg" src="../../images/zhuanfa.png"></image>
+            <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">转发领50积分</text>
+        </view>
+        <view class="item">
+            <image class="itemimg" src="../../images/qiandao.png"></image>
+            <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">签到领10积分</text>
+        </view>
+    </view>
+    <view class="footer">
+        <view style="display: flex;align-items: center">
+            <image src="../../images/kefu.png" style="width: 50rpx;height: 50rpx;margin: 0 10rpx 0 40rpx;color: #666"></image>
+            <text style="font-size: 24rpx">联系客服</text>
+        </view>
+        <view style="margin-right: 40rpx;color: #666">></view>
     </view>
 </view>

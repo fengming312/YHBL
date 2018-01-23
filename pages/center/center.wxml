@@ -1,0 +1,6 @@
+<view style="height: 100%;background-color: #EDEDED;">
+    <view class="heder">
+        <image src="{{avatar}}" style="border-radius: 50%;width: 150rpx;height: 150rpx;"></image>
+        <text style="margin-top: 20rpx;">{{nickName}}</text>
+    </view>
+</view>

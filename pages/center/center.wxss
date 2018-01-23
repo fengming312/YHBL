@@ -1,0 +1,10 @@
+.heder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.9;
+    background-color: #fff;
+    height: 300rpx;
+    justify-content: center;
+}
+

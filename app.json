@@ -3,7 +3,8 @@
     "pages/jingxuan/jingxuan",
     "pages/ten/ten",
     "pages/twenty/twenty",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/center/center"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -34,6 +35,12 @@
         "text": "全天销量榜",
         "iconPath": "./images/3.png",
         "selectedIconPath": "./images/3-1.png"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "个人中心",
+        "iconPath": "./images/4.png",
+        "selectedIconPath": "./images/4-1.png"
       }
     ]
   }

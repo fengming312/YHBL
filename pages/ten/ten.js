@@ -53,13 +53,6 @@ Page({
 			title: '加载中',
 		})
 		this.loadData(1, this.data.currentTab);
-		//调用应用实例的方法获取全局数据
-		app.getUserInfo(userInfo => {
-			//更新数据
-			this.setData({
-				userInfo: userInfo
-			})
-		})
 	},
 
   toSearch () {

@@ -18,14 +18,19 @@ Page({
 					loginStatus: true,
 				})
 				wx.login({
-					success: function(res) {
-						if (res.code) {
+					success: function(r) {
+						if (r.code) {
 							//发起网络请求
-							request('/api/getOpenid', {'js_code':res.code}).then((res) => {
-								console.log(res);
+							request('/api/getOpenid', {
+								'js_code':r.code,
+								'encryptedData': res.encryptedData,
+								'iv': res.iv,
+							}).then((r1) => {
+								console.log(r1);
 							})
+							
 						} else {
-							console.log('获取用户登录态失败！' + res.errMsg)
+							console.log('获取用户登录态失败！' + r.errMsg)
 						}
 					}
 				});

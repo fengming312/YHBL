@@ -101,20 +101,18 @@ Page({
 		loading:true
 	},
 	onLoad: function () {
+		
 		wx.showNavigationBarLoading() //在标题栏中显示加载
 		wx.showLoading({
 			title: '加载中',
 		})
 		this.loadData(1, this.data.currentTab);
 		//调用应用实例的方法获取全局数据
-		app.getUserInfo(userInfo => {
-			//更新数据
-			this.setData({
-				userInfo: userInfo
-			})
-		})
 	},
 	onShareAppMessage: function (res) {
+		wx.showShareMenu({
+			withShareTicket: true
+		})
 		if (res.from === 'button') {
 			// 来自页面内转发按钮
 			console.log(res.target)
@@ -124,6 +122,7 @@ Page({
 			imageUrl: '../../images/icon.jpg',
 			success: function (res) {
 				// 转发成功
+				console.log(res);
 			},
 			fail: function (res) {
 				// 转发失败
@@ -198,7 +197,8 @@ Page({
 			let activity_id = e.currentTarget.dataset.data.coupon_id;
 			let url = `https://uland.taobao.com/coupon/edetail?activityId=${activity_id}&itemId=${num_iid}&pid=mm_45185224_41898191_194664578`;
 			wx.request({
-				url: 'https://senhuor.com/api/topApi',
+//				url: 'https://senhuor.com/api/topApi',
+				url: 'http://localhost:3001/api/topApi',
 				data: {
 					"title": e.currentTarget.dataset.data.goods_short_title,
 					"url": url,
@@ -460,7 +460,6 @@ Page({
 			title: '刷新中',
 		})
 		this.loadData(1, this.data.currentTab, this.data.sort)
-		
 	},
 	
 	onReachBottom () {

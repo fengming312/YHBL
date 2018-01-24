@@ -113,6 +113,9 @@ Page({
   },
 
 	onShareAppMessage: function (res) {
+		wx.showShareMenu({
+			withShareTicket: true
+		})
 		if (res.from === 'button') {
 			// 来自页面内转发按钮
 			console.log(res.target)
@@ -122,9 +125,12 @@ Page({
       imageUrl:'../../images/icon.jpg',
 			success: function(res) {
 				// 转发成功
+				
+				console.log(res);
 			},
 			fail: function(res) {
 				// 转发失败
+				console.log(res);
 			}
 		}
 	},

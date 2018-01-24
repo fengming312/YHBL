@@ -1,35 +1,46 @@
-<view style="height: 100%;background-color: #F4F4F4;">
+<view style="height: 100%;background-color: #F4F4F4;display: flex;flex-direction: column">
     <view class="heder">
-        <image src="{{avatar}}" style="border-radius: 50%;width: 150rpx;height: 150rpx;"></image>
-        <text style="margin-top: 20rpx;">{{nickName}}</text>
+        <image src="{{loginStatus?avatar:'../../images/avatar.png'}}" style="border-radius: 50%;width: 150rpx;height: 150rpx;"></image>
+        <text style="margin-top: 20rpx;font-size: 24rpx;">{{loginStatus?nickName:'请登录'}}</text>
     </view>
-    <view class="body">
-        <view class="item">
-            <image class="itemimg" src="../../images/jifen.png"></image>
-            <text style="margin: 15rpx 0;color: #408CE2">1000.00</text>
-            <text style="font-size: 24rpx;color: #666">积分</text>
+    <view wx:if="{{loginStatus}}">
+        <view class="body">
+            <view class="item">
+                <image class="itemimg" src="../../images/jifen.png"></image>
+                <text style="margin: 15rpx 0;color: #408CE2">1000.00</text>
+                <text style="font-size: 24rpx;color: #666">积分</text>
+            </view>
+            <view class="item">
+                <image class="itemimg" src="../../images/qian.png"></image>
+                <text style="margin: 15rpx 0;color: #408CE2">10.00</text>
+                <text style="font-size: 24rpx;color: #666">余额</text>
+            </view>
         </view>
-        <view class="item">
-            <image class="itemimg" src="../../images/qian.png"></image>
-            <text style="margin: 15rpx 0;color: #408CE2">10.00</text>
-            <text style="font-size: 24rpx;color: #666">余额</text>
+        <view class="body" style="margin-top: 10rpx;padding: 30rpx 0;box-sizing: border-box" >
+            <button class="item" open-type="share" disabled="{{shareDiabled}}">
+                <image class="itemimg" src="../../images/zhuanfa.png"></image>
+                <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">转发领50积分</text>
+                <!--<text hidden="{{!shareDiabled}}" style="font-size: 20rpx;color: #F95C68;">【今日已转】</text>-->
+            </button>
+            <view class="item">
+                <image class="itemimg" src="../../images/qiandao.png"></image>
+                <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">签到领10积分</text>
+            </view>
+        </view>
+        <view class="footer">
+            <view style="display: flex;align-items: center">
+                <image src="../../images/kefu.png" style="width: 50rpx;height: 50rpx;margin: 0 10rpx 0 40rpx;color: #666"></image>
+                <text style="font-size: 24rpx">联系客服</text>
+            </view>
+            <view style="margin-right: 40rpx;color: #666">></view>
+        </view>
+        <view style="display: flex;flex-direction: column;padding-left: 50rpx;margin-top: 20rpx;">
+            <text class="define">说明：</text>
+            <text class="define1">转发：每日只能转发一次，且只能转发到【群聊】才能获得50积分！</text>
+            <text class="define1">提现：每日只能签到一0积分！</text>
         </view>
     </view>
-    <view class="body" style="margin-top: 10rpx;">
-        <view class="item">
-            <image class="itemimg" src="../../images/zhuanfa.png"></image>
-            <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">转发领50积分</text>
-        </view>
-        <view class="item">
-            <image class="itemimg" src="../../images/qiandao.png"></image>
-            <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">签到领10积分</text>
-        </view>
-    </view>
-    <view class="footer">
-        <view style="display: flex;align-items: center">
-            <image src="../../images/kefu.png" style="width: 50rpx;height: 50rpx;margin: 0 10rpx 0 40rpx;color: #666"></image>
-            <text style="font-size: 24rpx">联系客服</text>
-        </view>
-        <view style="margin-right: 40rpx;color: #666">></view>
+    <view wx:else style="flex: 1;display: flex;justify-content: center;align-items: center">
+        <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" style="background-color: #F95C68;text-align: center;width: 60%;height: 70rpx;line-height: 70rpx;border-radius: 10rpx;color: #fff;font-size: 30rpx">登 录</button>
     </view>
 </view>

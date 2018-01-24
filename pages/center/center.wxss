@@ -38,3 +38,14 @@
     margin-top: 30rpx;
 }
 
+.define {
+    font-size: 24rpx;
+    color: #666;
+}
+.define1 {
+    font-size: 20rpx;
+    color: #666;
+    line-height: 35rpx;
+    margin-left: 20rpx;
+}
+

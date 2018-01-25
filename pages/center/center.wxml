@@ -3,7 +3,7 @@
         <image src="{{loginStatus?avatar:'../../images/avatar.png'}}" style="border-radius: 50%;width: 150rpx;height: 150rpx;"></image>
         <text style="margin-top: 20rpx;font-size: 24rpx;">{{loginStatus?nickName:'请登录'}}</text>
     </view>
-    <view wx:if="{{loginStatus}}">
+    <view wx:if="{{loginStatus && tagShow == 1}}">
         <view class="body">
             <view class="item">
                 <image class="itemimg" src="../../images/jifen.png"></image>
@@ -12,17 +12,19 @@
             </view>
             <view class="item">
                 <image class="itemimg" src="../../images/qian.png"></image>
-                <text style="margin: 15rpx 0;color: #408CE2">{{money}}.00元</text>
+                <text style="margin: 15rpx 0;color: #408CE2">{{money}} <text style="font-size: 22rpx">元</text></text>
                 <text style="font-size: 24rpx;color: #666">余额</text>
             </view>
         </view>
         <view class="body" style="margin-top: 10rpx;padding: 30rpx 0;box-sizing: border-box" >
             <button class="item" open-type="share" disabled="{{shareDisabled}}">
-                <image class="itemimg" src="../../images/zhuanfa.png"></image>
+                <image wx:if="{{!shareDisabled}}" class="itemimg" src="../../images/zhuanfa.png"></image>
+                <image wx:else class="itemimg1" src="../../images/hasshare.png"></image>
                 <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">转发领50积分</text>
             </button>
             <button class="item" disabled="{{signDisabled}}" bindtap="sign">
-                <image class="itemimg" src="../../images/qiandao.png"></image>
+                <image wx:if="{{!signDisabled}}"class="itemimg" src="../../images/qiandao.png"></image>
+                <image wx:else class="itemimg1" src="../../images/hassign.png"></image>
                 <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">签到领10积分</text>
             </button>
         </view>

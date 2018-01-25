@@ -27,3 +27,6 @@ button {
     margin: 0;
     background-color:#fff;
 }
+button[disabled][type="default"], wx-button[disabled]:not([type]) {
+    background-color: #fff;
+}

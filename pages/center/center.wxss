@@ -21,19 +21,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 200rpx;
+    width: 250rpx;
 }
 
 .itemimg {
     width: 60rpx;
     height: 60rpx;
 }
+.itemimg1 {
+    width: 100rpx;
+    height: 100rpx;
+}
 
 .footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100rpx;
+    height: 80rpx;
     background-color: #fff;
     margin-top: 30rpx;
 }

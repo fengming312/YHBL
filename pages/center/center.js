@@ -10,7 +10,8 @@ Page({
 		signDisabled:false,
 		points:0,
 		money:0,
-		openid:''
+		openid:'',
+    tagShow:''
 	},
 	
 	onLoad () {
@@ -43,22 +44,25 @@ Page({
 								'country': res.userInfo.country,
 								'language': res.userInfo.language,
 							}).then((r1) => {
-								that.setData({
-									signDisabled:r1.signStatus == 'Y'?true:false,
-									shareDisabled:r1.shareStatus == 'Y'?true:false,
-									points:r1.points,
-									money:r1.money,
-									openid:r1.openid
+                that.setData({
+									signDisabled:r1.data.signStatus == 'Y'?true:false,
+									shareDisabled:r1.data.shareStatus == 'Y'?true:false,
+									points:r1.data.points,
+									money:r1.data.money,
+									openid:r1.data.openid,
+                  tagShow:r1.tagShow
 								})
-								wx.stopPullDownRefresh()
-								wx.hideLoading()
 							})
 						} else {
 							console.log('获取用户登录态失败！' + r.errMsg)
 						}
-					}
+					},
 				});
-			}
+			},
+      complete: function () {
+        wx.hideLoading()
+        wx.stopPullDownRefresh()
+      }
 		})
 		
 	},
@@ -71,12 +75,9 @@ Page({
 	},
 	
 	userInfoHandler (e) {
-		if (e.detail.userInfo) {//授权成功
-			this.setData({
-				avatar: e.detail.userInfo.avatarUrl,
-				nickName: e.detail.userInfo.nickName,
-				loginStatus: true
-			})
+    console.log(e);
+    if (e.detail.userInfo) {//授权成功
+			this.getLoginInfo ()
 		}
 	},
 	
@@ -90,11 +91,12 @@ Page({
 			if (res) {
 				this.setData({
 					signDisabled:res.signStatus == 'Y'?true:false,
-					points:res.points
+					points:res.points,
+					money:res.money
 				})
 				wx.showModal({
 					title: '签到成功',
-					content: `+${res.pointsNum}积分`,
+					content: `+${res.data.pointsNum}积分`,
 					showCancel:false,
 					confirmText:'知道啦'
 				})
@@ -126,11 +128,12 @@ Page({
 						if (r) {
 							that.setData({
 								shareDisabled:r.shareStatus == 'Y'?true:false,
-								points:r.points
+								points:r.points,
+                money:r.money
 							})
 							wx.showModal({
 								title: '转发成功',
-								content: `+${r.pointsNum}积分`,
+								content: `+${r.data.pointsNum}积分`,
 								showCancel:false,
 								confirmText:'知道啦'
 							})

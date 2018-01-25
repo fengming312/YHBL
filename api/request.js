@@ -1,5 +1,5 @@
-//const DOMINE = 'http://localhost:3001';
-const DOMINE = 'https://senhuor.com';
+const DOMINE = 'http://localhost:3001';
+// const DOMINE = 'https://senhuor.com';
 function request (url,data) {
 		return new Promise((resolve,reject) => {
 			wx.request({
@@ -10,11 +10,11 @@ function request (url,data) {
 					'Content-Type': 'application/x-www-form-urlencoded'
 				},
 				success: res => {
-					resolve(res.data.data);
+					resolve(res.data);
 				},
 				fail: function(res) {
 					// fail调用接口失败
-					reject(res.data.data);
+					reject(res.data);
 				},
 				complete: function(res) {
 					// complete

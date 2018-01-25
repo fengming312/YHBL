@@ -6,10 +6,22 @@ Page({
 		avatar: '',
 		nickName: '',
 		loginStatus: false,
-		shareDiabled:true
+		shareDisabled:false,
+		signDisabled:false,
+		points:0,
+		money:0,
+		openid:''
 	},
 	
 	onLoad () {
+		wx.showLoading({
+			title: '加载中',
+		})
+		this.getLoginInfo()
+	},
+	
+	getLoginInfo () {
+		let that = this
 		wx.getUserInfo({
 			success: (res) => {
 				this.setData({
@@ -23,12 +35,24 @@ Page({
 							//发起网络请求
 							request('/api/getOpenid', {
 								'js_code':r.code,
-								'encryptedData': res.encryptedData,
-								'iv': res.iv,
+								'avatarUrl': res.userInfo.avatarUrl,
+								'nickName': res.userInfo.nickName,
+								'gender': res.userInfo.gender,
+								'city': res.userInfo.city,
+								'province': res.userInfo.province,
+								'country': res.userInfo.country,
+								'language': res.userInfo.language,
 							}).then((r1) => {
-								console.log(r1);
+								that.setData({
+									signDisabled:r1.signStatus == 'Y'?true:false,
+									shareDisabled:r1.shareStatus == 'Y'?true:false,
+									points:r1.points,
+									money:r1.money,
+									openid:r1.openid
+								})
+								wx.stopPullDownRefresh()
+								wx.hideLoading()
 							})
-							
 						} else {
 							console.log('获取用户登录态失败！' + r.errMsg)
 						}
@@ -37,6 +61,13 @@ Page({
 			}
 		})
 		
+	},
+	
+	onPullDownRefresh () {
+		wx.showLoading({
+			title: '刷新中',
+		})
+		this.getLoginInfo()
 	},
 	
 	userInfoHandler (e) {
@@ -49,7 +80,30 @@ Page({
 		}
 	},
 	
+	sign () {
+		//签到
+		request('/api/sign', {
+			'signStatus':'Y',
+			'points':this.data.points,
+			'openid':this.data.openid
+		}).then(res => {
+			if (res) {
+				this.setData({
+					signDisabled:res.signStatus == 'Y'?true:false,
+					points:res.points
+				})
+				wx.showModal({
+					title: '签到成功',
+					content: `+${res.pointsNum}积分`,
+					showCancel:false,
+					confirmText:'知道啦'
+				})
+			}
+		})
+	},
+	
 	onShareAppMessage: function (res) {
+		let that = this;
 		wx.showShareMenu({
 			withShareTicket: true
 		})
@@ -62,9 +116,25 @@ Page({
 			imageUrl: '../../images/icon.jpg',
 			success: function (res) {
 				// 转发群成功
+				console.log(res);
 				if (res.shareTickets.length > 0) {
-					request('/api/share', {aaa: 1}).then((r) => {
-						console.log(r);
+					request('/api/share', {
+						'shareStatus':'Y',
+						'points':that.data.points,
+						'openid':that.data.openid
+					}).then(r => {
+						if (r) {
+							that.setData({
+								shareDisabled:r.shareStatus == 'Y'?true:false,
+								points:r.points
+							})
+							wx.showModal({
+								title: '转发成功',
+								content: `+${r.pointsNum}积分`,
+								showCancel:false,
+								confirmText:'知道啦'
+							})
+						}
 					})
 				}
 			},

@@ -7,25 +7,24 @@
         <view class="body">
             <view class="item">
                 <image class="itemimg" src="../../images/jifen.png"></image>
-                <text style="margin: 15rpx 0;color: #408CE2">1000.00</text>
+                <text style="margin: 15rpx 0;color: #408CE2">{{points}}.00</text>
                 <text style="font-size: 24rpx;color: #666">积分</text>
             </view>
             <view class="item">
                 <image class="itemimg" src="../../images/qian.png"></image>
-                <text style="margin: 15rpx 0;color: #408CE2">10.00</text>
+                <text style="margin: 15rpx 0;color: #408CE2">{{money}}.00元</text>
                 <text style="font-size: 24rpx;color: #666">余额</text>
             </view>
         </view>
         <view class="body" style="margin-top: 10rpx;padding: 30rpx 0;box-sizing: border-box" >
-            <button class="item" open-type="share" disabled="{{shareDiabled}}">
+            <button class="item" open-type="share" disabled="{{shareDisabled}}">
                 <image class="itemimg" src="../../images/zhuanfa.png"></image>
                 <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">转发领50积分</text>
-                <!--<text hidden="{{!shareDiabled}}" style="font-size: 20rpx;color: #F95C68;">【今日已转】</text>-->
             </button>
-            <view class="item">
+            <button class="item" disabled="{{signDisabled}}" bindtap="sign">
                 <image class="itemimg" src="../../images/qiandao.png"></image>
                 <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">签到领10积分</text>
-            </view>
+            </button>
         </view>
         <view class="footer">
             <view style="display: flex;align-items: center">
@@ -37,7 +36,7 @@
         <view style="display: flex;flex-direction: column;padding-left: 50rpx;margin-top: 20rpx;">
             <text class="define">说明：</text>
             <text class="define1">转发：每日只能转发一次，且只能转发到【群聊】才能获得50积分！</text>
-            <text class="define1">提现：每日只能签到一0积分！</text>
+            <text class="define1">签到：每日签到获得10积分！</text>
         </view>
     </view>
     <view wx:else style="flex: 1;display: flex;justify-content: center;align-items: center">

@@ -40,6 +40,10 @@
             <text class="define1">转发：每日只能转发一次，且只能转发到【群聊】才能获得50积分！</text>
             <text class="define1">签到：每日签到获得10积分！</text>
         </view>
+        <view style="display: flex;flex-direction: column;font-size: 24rpx;color: #666;justify-content: center;align-items: center;margin-top: 20rpx;">
+            <text>Copyright @2016-2018</text>
+            <text>杭州宝露电子商务有限公司</text>
+        </view>
     </view>
     <view wx:else style="flex: 1;display: flex;justify-content: center;align-items: center">
         <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" style="background-color: #F95C68;text-align: center;width: 60%;height: 70rpx;line-height: 70rpx;border-radius: 10rpx;color: #fff;font-size: 30rpx">登 录</button>

@@ -90,9 +90,9 @@ Page({
 		}).then(res => {
 			if (res) {
 				this.setData({
-					signDisabled:res.signStatus == 'Y'?true:false,
-					points:res.points,
-					money:res.money
+					signDisabled:res.data.signStatus == 'Y'?true:false,
+					points:res.data.points,
+					money:res.data.money
 				})
 				wx.showModal({
 					title: '签到成功',
@@ -127,9 +127,9 @@ Page({
 					}).then(r => {
 						if (r) {
 							that.setData({
-								shareDisabled:r.shareStatus == 'Y'?true:false,
-								points:r.points,
-                money:r.money
+								shareDisabled:r.data.shareStatus == 'Y'?true:false,
+								points:r.data.points,
+                money:r.data.money
 							})
 							wx.showModal({
 								title: '转发成功',

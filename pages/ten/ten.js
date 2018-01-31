@@ -5,9 +5,18 @@ var cachedResults = {
 	total: 0,
 	num: 0
 }
+import request from '../../api/request'
 
 Page({
 	data: {
+		width:'70%',
+		height:'300rpx',
+		mgl:'-35%',
+		mgt:'300rpx',
+		imgUrl:'http://b366.photo.store.qq.com/psb?/V11WmQSH3rLyY2/W0UbEaNr58hOv*fa3E7gb.gbBXWnbc5Ms8Q5MKZ36eQ!/b/dG4BAAAAAAAA&bo=qwYABcAP0AsRCYI!&rf=viewer_4',
+		activityInfoObj:{},
+		modelShow_img: false,
+		modelShow: false,
 		itemData: '',
 		hide:false,
 		sortIndex: 0,
@@ -37,6 +46,7 @@ Page({
 			}
 		],
 	},
+	
 	onShow () {
     this.setData({
       inputValue:''
@@ -44,6 +54,7 @@ Page({
 		wx.showNavigationBarLoading() //在标题栏中显示加载
 		this.loadData(1, this.data.currentTab);
 	},
+	
 	onLoad: function () {
 		wx.showNavigationBarLoading() //在标题栏中显示加载
 		wx.setNavigationBarTitle({
@@ -53,8 +64,29 @@ Page({
 			title: '加载中',
 		})
 		this.loadData(1, this.data.currentTab);
+		this.getActivityInfo()
 	},
 
+	getActivityInfo () {
+		let that = this;
+		request('/api/manage/getActivityInfo', {})
+			.then((res) => {
+				console.log(res);
+				if (res.data.datas.show == '1') {
+					that.setData({
+						modelShow_img:true
+					})
+				}else {
+					that.setData({
+						modelShow_img:false
+					})
+				}
+				that.setData({
+					activityInfoObj:res.data.datas
+				})
+		})
+	},
+	
   toSearch () {
     if (this.data.inputValue) {
       wx.navigateTo({
@@ -220,10 +252,36 @@ Page({
 		}
 	},
 	
+	getActivity () {
+		wx.showModal({
+			content: `这是淘口令`,
+			confirmText: '一键复制',
+			success: res => {
+				if (res.confirm) {
+					wx.setClipboardData({
+						data: '这是淘口令',
+						success: function (res) {
+							wx.showToast({
+								title: '复制成功',
+								duration: 1500,
+							})
+						}
+					})
+				}
+			}
+		})
+	},
+	
 	hide () {
 		this.setData({
 			modelShow: false,
 			hide:false
+		})
+	},
+	
+	closeImgModel () {
+		this.setData({
+			modelShow_img: false,
 		})
 	},
 	

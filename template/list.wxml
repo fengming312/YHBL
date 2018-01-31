@@ -185,5 +185,13 @@
    <image bindtap="toTop" hidden="{{toTopShow}}" src="../../images/totop.png" style="opacity:0.7;width: 70rpx;height: 70rpx;position: fixed;z-index: 801;right: 60rpx;bottom: 100rpx;"></image>
 </template>
 
-
+<!--图片活动的弹窗-->
+<template name="model_img">
+    <view bindtap="hide" style="width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);position: fixed;z-index: 888;filter: alpha(opacity=70);">
+    </view>
+    <view style="width: {{activityInfoObj.width}};height: {{activityInfoObj.height}};position: fixed;z-index:999;left: 50%;margin-left: {{activityInfoObj.mgl}};margin-top: 250rpx;">
+        <image bindtap="getActivity" src="{{activityInfoObj.imgUrl}}" style="width: 100%;height: 100%;"></image>
+        <image bindtap="closeImgModel" src="../../images/close.png" style="width: 50rpx;height: 50rpx;position: absolute;top: -60rpx;right: -55rpx;"></image>
+    </view>
+</template>
 

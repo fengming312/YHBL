@@ -18,54 +18,54 @@ Page({
 //		wx.showLoading({
 //			title: '加载中',
 //		})
-//		this.getLoginInfo()
+		this.getLoginInfo()
 	},
 //
-//	getLoginInfo () {
-//		let that = this
-//		wx.getUserInfo({
-//			success: (res) => {
-//				this.setData({
-//					avatar: res.userInfo.avatarUrl,
-//					nickName: res.userInfo.nickName,
-//					loginStatus: true,
-//				})
-//				wx.login({
-//					success: function(r) {
-//						if (r.code) {
-//							//发起网络请求
-//							request('/api/getOpenid', {
-//								'js_code':r.code,
-//								'avatarUrl': res.userInfo.avatarUrl,
-//								'nickName': res.userInfo.nickName,
-//								'gender': res.userInfo.gender,
-//								'city': res.userInfo.city,
-//								'province': res.userInfo.province,
-//								'country': res.userInfo.country,
-//								'language': res.userInfo.language,
-//							}).then((r1) => {
-//								that.setData({
-//									signDisabled:r1.data.signStatus == 'Y'?true:false,
-//									shareDisabled:r1.data.shareStatus == 'Y'?true:false,
-//									points:r1.data.points,
-//									money:r1.data.money,
-//									openid:r1.data.openid,
-//                  tagShow:r1.tagShow
-//								})
-//							})
-//						} else {
-//							console.log('获取用户登录态失败！' + r.errMsg)
-//						}
-//					},
-//				});
-//			},
-//      complete: function () {
-//        wx.hideLoading()
-//        wx.stopPullDownRefresh()
-//      }
-//		})
-//
-//	},
+	getLoginInfo () {
+		let that = this
+		wx.getUserInfo({
+			success: (res) => {
+				this.setData({
+					avatar: res.userInfo.avatarUrl,
+					nickName: res.userInfo.nickName,
+					loginStatus: true,
+				})
+				wx.login({
+					success: function(r) {
+						if (r.code) {
+							//发起网络请求
+							request('/api/getOpenid', {
+								'js_code':r.code,
+								'avatarUrl': res.userInfo.avatarUrl,
+								'nickName': res.userInfo.nickName,
+								'gender': res.userInfo.gender,
+								'city': res.userInfo.city,
+								'province': res.userInfo.province,
+								'country': res.userInfo.country,
+								'language': res.userInfo.language,
+							}).then((r1) => {
+								that.setData({
+									signDisabled:r1.data.signStatus == 'Y'?true:false,
+									shareDisabled:r1.data.shareStatus == 'Y'?true:false,
+									points:r1.data.points,
+									money:r1.data.money,
+									openid:r1.data.openid,
+                  tagShow:r1.tagShow
+								})
+							})
+						} else {
+							console.log('获取用户登录态失败！' + r.errMsg)
+						}
+					},
+				});
+			},
+      complete: function () {
+        wx.hideLoading()
+        wx.stopPullDownRefresh()
+      }
+		})
+
+	},
 //
 //	onPullDownRefresh () {
 //		wx.showLoading({

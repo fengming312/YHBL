@@ -4,6 +4,11 @@
         <template is="model_dataoke" data="{{itemData}}"></template>
     </block>
 </view>
+<view>
+    <block wx:if="{{modelShow_img}}">
+        <template is="model_img" data="{{activityInfoObj}}"></template>
+    </block>
+</view>
 <view class="page">
     <view hidden="{{searchShow}}" style="padding: 0 40rpx;position: fixed;width: 100%;box-sizing: border-box;background-color: #fff;z-index: 800;opacity: 0.9">
         <view style="display: flex;border: 1px solid #FC4E32;padding-left: 20rpx;border-radius: 8rpx">

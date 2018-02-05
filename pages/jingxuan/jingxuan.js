@@ -193,9 +193,9 @@ Page({
 				}
 			})
 		}else {
-			let num_iid = e.currentTarget.dataset.data.goods_id;
-			let activity_id = e.currentTarget.dataset.data.coupon_id;
-			let url = `https://uland.taobao.com/coupon/edetail?activityId=${activity_id}&itemId=${num_iid}&pid=mm_45185224_41898191_194664578`;
+			let goods_id = e.currentTarget.dataset.data.goods_id;
+			let coupon_id = e.currentTarget.dataset.data.coupon_id;
+			let url = `https://uland.taobao.com/coupon/edetail?activityId=${coupon_id}&itemId=${goods_id}&pid=mm_45185224_41898191_194664578`;
 			wx.request({
 //				url: 'https://senhuor.com/api/topApi',
 				url: 'http://localhost:3001/api/topApi',

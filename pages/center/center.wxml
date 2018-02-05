@@ -1,8 +1,8 @@
-<!--<view style="height: 100%;background-color: #F4F4F4;display: flex;flex-direction: column">-->
-    <!--<view class="heder">-->
-        <!--<image src="{{loginStatus?avatar:'../../images/avatar.png'}}" style="border-radius: 50%;width: 150rpx;height: 150rpx;"></image>-->
-        <!--<text style="margin-top: 20rpx;font-size: 24rpx;">{{loginStatus?nickName:'请登录'}}</text>-->
-    <!--</view>-->
+<view wx:if="{{tagShow == '2'}}" style="height: 100%;background-color: #F4F4F4;display: flex;flex-direction: column">
+    <view class="heder">
+        <image src="{{loginStatus?avatar:'../../images/avatar.png'}}" style="border-radius: 50%;width: 150rpx;height: 150rpx;"></image>
+        <text style="margin-top: 20rpx;font-size: 24rpx;">{{loginStatus?nickName:'请登录'}}</text>
+    </view>
     <!--<view wx:if="{{loginStatus && tagShow == 1}}">-->
         <!--<view class="body">-->
             <!--<view class="item">-->
@@ -48,5 +48,5 @@
     <!--<view wx:else style="flex: 1;display: flex;justify-content: center;align-items: center">-->
         <!--<button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" style="background-color: #F95C68;text-align: center;width: 60%;height: 70rpx;line-height: 70rpx;border-radius: 10rpx;color: #fff;font-size: 30rpx">登 录</button>-->
     <!--</view>-->
-<!--</view>-->
-<web-view src="https://wx.youhuibaoliao.com/app/index.php?i=2&c=entry&do=mc_login&m=bsht_tbkdl"></web-view>
+</view>
+<web-view wx:if="{{tagShow == '1'}}" src="https://wx.youhuibaoliao.com/app/index.php?i=2&c=entry&do=mc_login&m=bsht_tbkdl"></web-view>

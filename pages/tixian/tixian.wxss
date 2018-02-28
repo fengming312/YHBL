@@ -1,0 +1,39 @@
+.container {
+    padding: 0 20px;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80rpx;
+}
+
+.item {
+    display: flex;
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+    height: 50px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.txt {
+    padding-left: 20px;
+    width: 80px;
+    height: 1.4rem;
+    line-height: 1.4rem;
+}
+
+.btn {
+    background-color: #F95C68;
+    text-align: center;
+    width: 70%;
+    height: 70rpx;
+    line-height: 70rpx;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    margin-top: 50px;
+}

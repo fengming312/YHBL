@@ -1,0 +1,24 @@
+<view class="container">
+    <view class="icon">
+        <image style="width: 80rpx;height: 80rpx;" src="../../images/qian.png"></image>
+        <text style="margin-top: 15px;">
+            <text style="font-size: 24rpx;color: #666">提现金额: </text>
+            <text style="margin: 15rpx 0;color: #408CE2">10 <text style="font-size: 22rpx">元</text></text>
+        </text>
+    </view>
+    <view class="item">
+        <text class="txt">支付宝:</text>
+        <input bindinput="getZhifubao" placeholder="请输入支付宝账号"/>
+    </view>
+    <view class="item">
+        <text class="txt">真实姓名:</text>
+        <input bindinput="getName" placeholder="请输入真实姓名"/>
+    </view>
+    <view class="item">
+        <text class="txt">手机号:</text>
+        <input bindinput="getTel" placeholder="请输入手机号" type="number"/>
+    </view>
+    <view style="flex: 1;display: flex;justify-content: center;align-items: center">
+        <button bindtap="submit" class="btn" disabled="{{btnDisabled}}">{{btnText}}</button>
+    </view>
+</view>

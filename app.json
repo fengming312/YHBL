@@ -4,7 +4,8 @@
     "pages/ten/ten",
     "pages/twenty/twenty",
     "pages/search/search",
-    "pages/center/center"
+    "pages/center/center",
+    "pages/tixian/tixian"
   ],
   "window": {
     "backgroundTextStyle": "light",

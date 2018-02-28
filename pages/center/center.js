@@ -44,7 +44,6 @@ Page({
 								'country': res.userInfo.country,
 								'language': res.userInfo.language,
 							}).then((r1) => {
-								console.log(r1)
 								that.setData({
 									signDisabled:r1.data.signStatus == 'Y'?true:false,
 									shareDisabled:r1.data.shareStatus == 'Y'?true:false,
@@ -147,4 +146,10 @@ Page({
 			}
 		}
 	},
+	
+	toTixian () {
+		wx.navigateTo({
+			url: `../tixian/tixian?openid=${this.data.openid}`
+		})
+	}
 })

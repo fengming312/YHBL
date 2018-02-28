@@ -3,7 +3,7 @@
         <image src="{{loginStatus?avatar:'../../images/avatar.png'}}" style="border-radius: 50%;width: 150rpx;height: 150rpx;"></image>
         <text style="margin-top: 20rpx;font-size: 24rpx;">{{loginStatus?nickName:'请登录'}}</text>
     </view>
-    <view wx:if="{{loginStatus && tagShow == 1}}">
+    <view wx:if="{{loginStatus}}">
         <view class="body">
             <view class="item">
                 <image class="itemimg" src="../../images/jifen.png"></image>
@@ -28,13 +28,17 @@
                 <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">签到领10积分</text>
             </button>
         </view>
-        <!-- <view class="footer">
-            <view style="display: flex;align-items: center">
-                <image src="../../images/kefu.png" style="width: 50rpx;height: 50rpx;margin: 0 10rpx 0 40rpx;color: #666"></image>
-                <text style="font-size: 24rpx">联系客服</text>
+         <view class="footer" bindtap="toTixian">
+            <!--<view style="display: flex;align-items: center">-->
+                <!--<image src="../../images/kefu.png" style="width: 50rpx;height: 50rpx;margin: 0 10rpx 0 40rpx;color: #666"></image>-->
+                <!--<text style="font-size: 24rpx">联系客服</text>-->
+            <!--</view>-->
+            <view style="display: flex;align-items: center" >
+                <image src="../../images/tixian.png" style="width: 50rpx;height: 50rpx;margin: 0 10rpx 0 40rpx;color: #666"></image>
+                <text style="font-size: 24rpx">我要提现</text>
             </view>
             <view style="margin-right: 40rpx;color: #666">></view>
-        </view> -->
+        </view>
         <view style="display: flex;flex-direction: column;padding-left: 50rpx;margin-top: 20rpx;">
             <text class="define">说明：</text>
             <text class="define1">转发：每日只能转发一次，且只能转发到【群聊】才能获得50积分！</text>

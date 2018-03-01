@@ -79,6 +79,11 @@ Page({
 						title: '提交成功',
 						duration: 1200
 					})
+					request('/api/getTixianRecordInfo',{
+						'openid':this.data.openid
+					}).then(r => {
+					
+					})
 				}
 			})
 		}else {

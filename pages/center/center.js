@@ -14,7 +14,7 @@ Page({
     tagShow:''
 	},
 	
-	onLoad () {
+	onShow () {
 		wx.showLoading({
 			title: '加载中',
 		})
@@ -148,8 +148,17 @@ Page({
 	},
 	
 	toTixian () {
+		if (this.data.money <10) {
+			wx.showToast({
+				title: '余额要大于10元才能提现哦',
+				icon:'none',
+				duration: 1200
+			})
+			return
+		}
+		let tixianMoney = Math.floor(this.data.money/10)*10
 		wx.navigateTo({
-			url: `../tixian/tixian?openid=${this.data.openid}`
+			url: `../tixian/tixian?openid=${this.data.openid}&tixianMoney=${tixianMoney}&points=${this.data.points}&money=${this.data.money}`
 		})
 	}
 })

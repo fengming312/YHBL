@@ -7,21 +7,34 @@ Page({
 		telValue:'',
 		openid:'',
 		btnDisabled:false,
-		btnText:'提交申请'
+		btnText:'提交申请',
+		tixianMoney:'',
+		points:'',
+		money:''
 	},
 	onLoad (option) {
+		console.log(option);
 		this.setData({
-			openid: option.openid
+			openid: option.openid,
+			tixianMoney: option.tixianMoney,
+			points: option.points,
+			money: option.money
 		})
 		let _this = this;
 		request('/api/getTixianInfo', {
 			'openid':option.openid
 		}).then(res => {
-			console.log(res);
+			if (res.data) {
+				_this.setData({
+					zhifubaoValue:res.data.zhifubao,
+					nameValue:res.data.name,
+					telValue:res.data.tel,
+				})
+			}
 			if (res.data && res.data.status == 'N') {
 				_this.setData({
 					btnText:'申请正在审核中',
-					btnDisabled:true
+					btnDisabled:true,
 				})
 			}
 		})
@@ -52,7 +65,9 @@ Page({
 				'zhifubao':this.data.zhifubaoValue,
 				'name':this.data.nameValue,
 				'tel':this.data.telValue,
-				'money':10,
+				'tixianMoney':this.data.tixianMoney,
+				'points':this.data.points,
+				'money':this.data.money,
 				'openid':this.data.openid
 			}).then(res => {
 				if (res.data && res.data.status == 'N') {

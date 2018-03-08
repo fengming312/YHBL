@@ -3,7 +3,7 @@
         <image src="{{loginStatus?avatar:'../../images/avatar.png'}}" style="border-radius: 50%;width: 150rpx;height: 150rpx;"></image>
         <text style="margin-top: 20rpx;font-size: 24rpx;">{{loginStatus?nickName:'请登录'}}</text>
     </view>
-    <view wx:if="{{loginStatus}}">
+    <view wx:if="{{loginStatus && tagShow=='1'}}">
         <view class="body">
             <view class="item">
                 <image class="itemimg" src="../../images/jifen.png"></image>
@@ -13,19 +13,19 @@
             <view class="item">
                 <image class="itemimg" src="../../images/qian.png"></image>
                 <text style="margin: 15rpx 0;color: #408CE2">{{money}} <text style="font-size: 22rpx">元</text></text>
-                <text style="font-size: 24rpx;color: #666">余额</text>
+                <text style="font-size: 24rpx;color: #666">奖励</text>
             </view>
         </view>
         <view class="body" style="margin-top: 10rpx;padding: 30rpx 0;box-sizing: border-box" >
             <button class="item" open-type="share" disabled="{{shareDisabled}}">
                 <image wx:if="{{!shareDisabled}}" class="itemimg" src="../../images/zhuanfa.png"></image>
                 <image wx:else class="itemimg1" src="../../images/hasshare.png"></image>
-                <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">转发领50积分</text>
+                <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">{{checkText.share}}领50积分</text>
             </button>
             <button class="item" disabled="{{signDisabled}}" bindtap="sign">
                 <image wx:if="{{!signDisabled}}"class="itemimg" src="../../images/qiandao.png"></image>
                 <image wx:else class="itemimg1" src="../../images/hassign.png"></image>
-                <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">签到领10积分</text>
+                <text style="font-size: 24rpx;color: #666;margin-top: 20rpx;">{{checkText.sign}}领10积分</text>
             </button>
         </view>
          <view class="footer" bindtap="toTixian">
@@ -41,11 +41,11 @@
         </view>
         <view style="display: flex;flex-direction: column;padding-left: 50rpx;margin-top: 20rpx;">
             <text class="define">说明：</text>
-            <text class="define1">转发：每日只能转发一次，且只能转发到【群聊】才能获得50积分！</text>
-            <text class="define1">签到：每日签到获得10积分！</text>
+            <text class="define1">{{checkText.share}}：每日只能{{checkText.share}}一次，且只能{{checkText.share}}到【群聊】才能获得50积分！</text>
+            <text class="define1">{{checkText.sign}}：每日{{checkText.sign}}获得10积分！</text>
         </view>
     </view>
-    <view wx:else style="flex: 1;display: flex;justify-content: center;align-items: center">
+    <view wx:if="{{!loginStatus && tagShow=='1'}}" style="flex: 1;display: flex;justify-content: center;align-items: center">
         <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" style="background-color: #F95C68;text-align: center;width: 60%;height: 70rpx;line-height: 70rpx;border-radius: 10rpx;color: #fff;font-size: 30rpx">登 录</button>
     </view>
 </view>

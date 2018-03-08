@@ -11,7 +11,8 @@ Page({
 		points:0,
 		money:0,
 		openid:'',
-    tagShow:''
+    tagShow:'',
+		checkText:''
 	},
 	
 	onShow () {
@@ -50,7 +51,8 @@ Page({
 									points:r1.data.points,
 									money:r1.data.money,
 									openid:r1.data.openid,
-                  tagShow:r1.tagShow
+                  tagShow:r1.tagShow,
+									checkText:r1.checkText
 								})
 							})
 						} else {
@@ -158,7 +160,7 @@ Page({
 		}
 		let tixianMoney = Math.floor(this.data.money/10)*10
 		wx.navigateTo({
-			url: `../tixian/tixian?openid=${this.data.openid}&tixianMoney=${tixianMoney}&points=${this.data.points}&money=${this.data.money}`
+			url: `../tixian/tixian?openid=${this.data.openid}&tixianMoney=${tixianMoney}&points=${this.data.points}&money=${this.data.money}&checkText=${this.data.checkText.zhifubao}`
 		})
 	}
 })

@@ -10,7 +10,8 @@ Page({
 		btnText:'提交申请',
 		tixianMoney:'',
 		points:'',
-		money:''
+		money:'',
+		checkText:''
 	},
 	onLoad (option) {
 		console.log(option);
@@ -18,7 +19,8 @@ Page({
 			openid: option.openid,
 			tixianMoney: option.tixianMoney,
 			points: option.points,
-			money: option.money
+			money: option.money,
+			checkText: option.checkText
 		})
 		let _this = this;
 		request('/api/getTixianInfo', {

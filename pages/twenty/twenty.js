@@ -48,17 +48,17 @@ Page({
 	},
 	onShareAppMessage: function (res) {
 		if (res.from === 'button') {
-			// 来自页面内转发按钮
+			// 来自页面内按钮
 			console.log(res.target)
 		}
 		return {
       title: '胜者为王，20分钟内最强爆款',
       imageUrl:'../../images/icon.jpg',
 			success: function(res) {
-				// 转发成功
+				// 成功
 			},
 			fail: function(res) {
-				// 转发失败
+				// 失败
 			}
 		}
 	},
